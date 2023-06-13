@@ -1,0 +1,26 @@
+{
+  "name": "chat-microservices",
+  "version": "1.0.0",
+  "description": "Chat microservices",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gwonsooche/chat-microservices.git"
+  },
+  "keywords": [],
+  "author": "Gwonsoo Che",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gwonsooche/chat-microservices/issues"
+  },
+  "homepage": "https://github.com/gwonsooche/chat-microservices#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "socket.io": "^4.6.2"
+  }
+}
