@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
-	--dark-color-a: #222222;
-	--dark-color-b: #333333;
-	--light-color: #e6e900;
+	--dark-color-a: #232; /* #222222 */ /* #062b02 */
+	--dark-color-b: #343; /* #333333 */ /* #30442d */
+	--light-color: #eee; /* #efe900 */
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
+	--main-orange-color: rgb(230, 169, 2);
+	--main-green-color-darker: #232;
+	--main-green-color-dark: #343;
+	--main-green-color-light: rgb(204, 200, 177);
 }
 
 * {
@@ -17,7 +21,7 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
-	background: var(--light-color);
+	background: var(--main-green-color-dark);
 	margin: 20px;
 }
 
@@ -32,8 +36,8 @@ a {
 .btn {
 	cursor: pointer;
 	padding: 5px 15px;
-	background: var(--light-color);
-	color: var(--dark-color-a);
+	background: var(--main-green-color-dark);
+	color: var(--main-green-color-light);
 	border: 0;
 	font-size: 17px;
 }
@@ -42,16 +46,16 @@ a {
 
 .chat-container {
 	max-width: 1100px;
-	background: #fff;
+	background: var(--main-green-color-light);
 	margin: 30px auto;
 	overflow: hidden;
 }
 
 .chat-header {
-	background: var(--dark-color-a);
-	color: #fff;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+	background: var(--main-green-color-darker);
+	color: var(--main-orange-color);
+	/* border-top-left-radius: 5px; */
+	/* border-top-right-radius: 5px; */
 	padding: 15px;
 	display: flex;
 	align-items: center;
@@ -64,8 +68,8 @@ a {
 }
 
 .chat-sidebar {
-	background: var(--dark-color-b);
-	color: #fff;
+	background: var(--main-green-color-dark);
+	color: var(--main-green-color-light);
 	padding: 20px 20px 60px;
 	overflow-y: scroll;
 }
@@ -112,7 +116,7 @@ a {
 
 .chat-form-container {
 	padding: 20px 30px;
-	background-color: var(--dark-color-a);
+	background-color: var(--main-green-color-darker);
 }
 
 .chat-form-container form {
@@ -124,26 +128,29 @@ a {
 	padding: 5px;
 	height: 40px;
 	flex: 1;
+	background-color: var(--main-green-color-light);
 }
 
 /* Join Page */
 .join-container {
 	max-width: 500px;
 	margin: 80px auto;
-	color: #e6e900;
+	color: var(--main-green-color-dark); /* #e6e900 */ /* #3f3 */ /* #bfb */ /* var(--light-color) */
 }
 
 .join-header {
 	text-align: center;
 	padding: 20px;
-	background: var(--dark-color-a);
+	background: var(--main-green-color-dark); /* var(--dark-color-a) */
+	color: var(--main-orange-color);
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
 .join-main {
 	padding: 30px 40px;
-	background: var(--dark-color-b);
+	background: var(--main-green-color-light);
+	border-radius: 20px;
 }
 
 .join-main p {
@@ -176,6 +183,7 @@ a {
 .join-main .btn {
 	margin-top: 20px;
 	width: 100%;
+	border-radius: 10px;
 }
 
 @media (max-width: 700px) {
