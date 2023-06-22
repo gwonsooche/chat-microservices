@@ -1,7 +1,7 @@
 const path = require('path'); // core module of Node.js
 const express = require('express');
-const { createServer } = require('http');
-const { Server } = require('socket.io');
+const {createServer} = require('http');
+const {Server} = require('socket.io');
 
 const app = express();
 // Serve the frontend using static files, rather than an independent
