@@ -32,6 +32,11 @@ io.on('connection', (socket) => {
     // newly joining.
     socket.broadcast.to(channel).emit('message', joinBroadcastMessage);
   });
+  
+  socket.on('chat-message', (messageText) => {
+    // TODO: Specify user and channel.
+    io.emit('message', constructMessage('TODO', messageText));
+  });
 });
 
 const PORT = process.env.PORT || 3002;
