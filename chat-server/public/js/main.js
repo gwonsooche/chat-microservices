@@ -11,7 +11,7 @@ const {username, channel} = Qs.parse(location.search, {
 socket.timeout(2000).emit('join-channel', {username, channel});
 
 socket.on('message', (message) => {
-  console.log(message);
+  /* console.log(message); */
   writeMessage(message);
 
   // Scroll down automatically.
