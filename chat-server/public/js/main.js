@@ -20,6 +20,8 @@ socket.on('message', (message) => {
 function writeMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
-  div.innerHTML = `<p class='text'>${message}</p>`;
+  div.innerHTML =
+      `<p class='meta'>${message.username} <span>${message.time}</span></p>
+      <p class='text'>${message.text}</p>`;
   document.querySelector('.chat-messages').appendChild(div);
 }
