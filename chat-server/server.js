@@ -28,22 +28,24 @@ io.on('connection', (socket) => {
     // Add the new user to the users activity manager.
     addUser(user);
 
-    welcomeMessage = constructMessage(chatbotName, `Welcome to ${channel}!`);
     // Emit welcome message to the single client that's newly joining the
     // channel.
+    const welcomeMessage =
+        constructMessage(chatbotName, `Welcome to ${channel}!`);
     socket.emit('message', welcomeMessage);
 
-    joinBroadcastMessage =
-        constructMessage(chatbotName, `${username} has joined the channel.`);
     // Emit to all the other clients in the channel, except the client that's
     // newly joining.
+    const joinBroadcastMessage =
+        constructMessage(chatbotName, `${username} has joined the channel.`);
     socket.broadcast.to(channel).emit('message', joinBroadcastMessage);
   });
   
   socket.on('chat-message', (messageText) => {
     try {
       const user = getUser(socket.id);
-      io.to(user.channel).emit('message', constructMessage(user.username, messageText));
+      io.to(user.channel)
+          .emit('message', constructMessage(user.username, messageText));
     } catch (err) {
       console.log(`${err.name}: ${err.message}`);
     }
