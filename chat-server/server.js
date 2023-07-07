@@ -5,6 +5,9 @@ const {Server} = require('socket.io');
 
 const constructMessage = require('./message');
 
+const {User} = require('./user');
+const {addUser, getUser} = require('./users-activity-manager');
+
 const app = express();
 // Serve the frontend using static files, rather than an independent
 // frontend application.
@@ -21,6 +24,10 @@ io.on('connection', (socket) => {
   socket.on('join-channel', ({username, channel}) => {
     socket.join(channel);
 
+    const user = new User(socket.id, username, channel);
+    // Add the new user to the users activity manager.
+    addUser(user);
+
     welcomeMessage = constructMessage(chatbotName, `Welcome to ${channel}!`);
     // Emit welcome message to the single client that's newly joining the
     // channel.
@@ -34,8 +41,12 @@ io.on('connection', (socket) => {
   });
   
   socket.on('chat-message', (messageText) => {
-    // TODO: Specify user and channel.
-    io.emit('message', constructMessage('TODO', messageText));
+    try {
+      const user = getUser(socket.id);
+      io.to(user.channel).emit('message', constructMessage(user.username, messageText));
+    } catch (err) {
+      console.log(`${err.name}: ${err.message}`);
+    }
   });
 });
 
