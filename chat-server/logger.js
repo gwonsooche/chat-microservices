@@ -1,11 +1,11 @@
-const logTypes = Object.freeze({
-  Debug: 'debug',
-  Info: 'info',
-  Warning: 'warning',
-  Error: 'error',
-  Critical: 'critical',
+const LogLevel = Object.freeze({
+  DEBUG: 'debug',
+  INFO: 'info',
+  WARNING: 'warning',
+  ERROR: 'error',
+  CRITICAL: 'critical',
 });
 
 module.exports = {
-  logTypes,
+  LogLevel,
 };
