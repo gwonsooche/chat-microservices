@@ -4,9 +4,10 @@ const {createServer} = require('http');
 const {Server} = require('socket.io');
 
 const constructMessage = require('./message');
-
 const {User} = require('./user');
 const {addUser, getUser} = require('./users-activity-manager');
+const {Logger} = require('./logger');
+const logger = new Logger();
 
 const app = express();
 // Serve the frontend using static files, rather than an independent
@@ -19,7 +20,7 @@ const io = new Server(httpServer, { /* options, if any */ });
 const chatbotName = 'Prompt bot';
 
 io.on('connection', (socket) => {
-  console.log(`Created socket connection with socket id ${socket.id}`);
+  logger.info(`Created socket connection with socket id ${socket.id}`);
 
   socket.on('join-channel', ({username, channel}) => {
     socket.join(channel);
@@ -47,7 +48,7 @@ io.on('connection', (socket) => {
       io.to(user.channel)
           .emit('message', constructMessage(user.username, messageText));
     } catch (err) {
-      console.log(`${err.name}: ${err.message}`);
+      logger.error(`${err.name}: ${err.message}`);
     }
   });
 });
@@ -55,5 +56,5 @@ io.on('connection', (socket) => {
 const PORT = process.env.PORT || 3002;
 
 httpServer.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  logger.info(`Server running on port ${PORT}`);
 });

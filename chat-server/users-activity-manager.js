@@ -6,6 +6,8 @@
  */
 
 const {User} = require('./user');
+const {Logger} = require('./logger');
+const logger = new Logger();
 
 // Hash table from "user id"s to "user"s
 const activeUsers = new Map();
@@ -22,13 +24,15 @@ function addUser(user) {
   if (activeUsers.has(user.id)) {
     const logText = `The user with id ${user.id} and username ${user.username}
         already exists`;
-    console.log(logText);
+    logger.warning(logText);
 
     return;
   }
 
   activeUsers.set(user.id, user);
-  console.log(`Added new user ${JSON.stringify(user)} to the user activity manager`);
+  const logText = 
+      `Added new user ${JSON.stringify(user)} to the users-activity manager`;
+  logger.info(logText);
 }
 
 /**
