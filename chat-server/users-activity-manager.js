@@ -28,7 +28,7 @@ function addUser(user) {
   }
 
   activeUsers.set(user.id, user);
-  console.log(`Added new user ${user} to the user activity manager`);
+  console.log(`Added new user ${JSON.stringify(user)} to the user activity manager`);
 }
 
 /**
