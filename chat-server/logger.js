@@ -33,17 +33,6 @@ function Logger() {
   };
 
   /**
-   * Returns true if the given `logLevel` is valid. Return false otherwise.
-   * @param {string} logLevel
-   * @returns {boolean}
-   */
-  this.isValidLogLevel = function(logLevel) {
-    return logLevel === LogLevel.DEBUG || logLevel === LogLevel.INFO ||
-        logLevel === LogLevel.WARNING || logLevel === LogLevel.ERROR ||
-        logLevel === LogLevel.CRITICAL;
-  }
-
-  /**
    * Constructs a complete log object.
    * @param {string} logLevel
    * @param {string} logText
