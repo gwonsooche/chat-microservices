@@ -55,11 +55,13 @@ function Logger() {
     const exchangeName = RABBIT_MQ.EXCHANGE_NAME;
     await this.channel.assertExchange(exchangeName, 'direct');
 
+    const routingKey = 'log';
+
     const log = this.constructLog(logLevel, logText);
     // Publish the log to the exchange.
     await this.channel.publish(
       exchangeName,
-      logLevel,
+      routingKey,
       Buffer.from(JSON.stringify(log))
     );
   }
