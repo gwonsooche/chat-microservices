@@ -1,4 +1,7 @@
-const AMQP_SERVER = 'localhost';
+// The string must match the service name for the RabbitMQ server under the
+// `services:` root element in docker-compose.yml. It was 'localhost' before
+// containerization.
+const AMQP_SERVER = 'rabbitmq-server';
 const AMQP_PORT = '5672';
 // the user information we use to log in to the management server via HTTP with
 // port number 15672.

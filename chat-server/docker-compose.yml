@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  chat-server:
+    build: .
+    ports:
+      - "3002:3002"
+    restart: on-failure
+  rabbitmq-server:
+    image: "rabbitmq:3.12-management"
